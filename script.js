@@ -1,5 +1,3 @@
-import json from "./data.json" assert {type:"json"};
-
 function formatJSON(json)
 {
     console.log(json);
@@ -22,5 +20,7 @@ function formatJSON(json)
 
 window.addEventListener("load",()=>
 {
-    formatJSON(JSON.parse(json));
+    fetch("data.json")
+        .then( response => response.json())
+        .then( data => formatJSON(data));
 });
